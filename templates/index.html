@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>{% block title %}Countdown{% endblock title %}</h1>
+
+        <h2>{% block subtitle %}aka. Cijfers &amp; Letters{% endblock subtitle %}</h2>
+
+        {% block menu %}
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('numbers') }}">Numbers</a></li>
+            <li><a href="{{ url_for('letters') }}">Letters (TODO)</a></li>
+        </ul>
+        {% endblock menu %}
+
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>

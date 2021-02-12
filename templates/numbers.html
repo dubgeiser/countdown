@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block subtitle %}
+Numbers
+{% endblock subtitle %}
+
+{% block content %}
+<h3>Maak {{ target }} met volgende getallen:</h3>
+<ul>
+    {% for number in selection %}
+    <li>{{ number }}</li>
+    {% endfor %}
+<ul>
+{% endblock content %}
