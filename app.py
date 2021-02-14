@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 
-from countdown import generate_numbers
+from countdown import numbers as n
 
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ def home():
 def numbers():
     if request.method == 'POST':
         big_count = int(request.form['big_count'])
-        target, selection = generate_numbers(big_count)
+        target, selection = n.generate(big_count)
         return render_template("numbers/index.html", target=target, selection=selection)
     else:
         return render_template("numbers/index.html")
