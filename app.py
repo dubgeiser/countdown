@@ -15,7 +15,7 @@ def home():
 @app.route("/numbers", methods=['GET', 'POST'])
 def numbers():
     if request.method == 'POST':
-        big_count = request.form['big_count']
+        big_count = int(request.form['big_count'])
         target, selection = generate_numbers(big_count)
         return render_template("numbers/index.html", target=target, selection=selection)
     else:
