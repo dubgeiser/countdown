@@ -1,0 +1,16 @@
+body {
+    font-size: 14px;
+    font-family: serif, arial;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+h2 {
+    font-size: 4em;
+}
+
+ul.menu {
+    justify-content: space-between;
+}
