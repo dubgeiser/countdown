@@ -3,16 +3,12 @@
 {% block subtitle %}
 Numbers
 {% endblock subtitle %}
-
+<h1>split up in different templates </h1>
 {% block content %}
-{% if request.method == 'GET' %}
-  {% include "numbers/form.html" %}
-{% else %}
   <h3>Maak {{ target }} met volgende getallen:</h3>
   <ul>
       {% for number in selection %}
       <li>{{ number }}</li>
       {% endfor %}
   <ul>
-{% endif %}
 {% endblock content %}

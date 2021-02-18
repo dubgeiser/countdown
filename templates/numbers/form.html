@@ -1,11 +1,16 @@
 <form method="POST">
-  {% if erros %}
+  {{ form.csrf_token }}
+
+  {% if form.errors.items() %}
   <ul class="form-error">
-  {% for e in errors %}
-  <li>{{ e }}</li>
-  {% endfor %}
+    {% for e in form.errors %}
+    <li>{{ e }}</li>
+    {% endfor %}
   </ul>
   {% endif %}
-  <label for="big_count_id">Aantal grote getallen:</label>
-  <input type="text" name="big_count" id="big_count_id" />
+
+  {{ form.big_count.label }}
+  {{ form.big_count() }}
+
+  <input type="submit" value="Start!" />
 </form>
