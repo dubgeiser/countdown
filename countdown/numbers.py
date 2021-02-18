@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Countdown (Cijfers&Letters)
 Number game
@@ -6,11 +5,7 @@ https://www.datagenetics.com/blog/august32014/index.html
 """
 import random
 
-def remove_random_element(l):
-    """ Remove random element from a list and return it """
-    choice = random.choice(l)
-    l.remove(choice)
-    return choice
+from countdown.utils import remove_random_element
 
 
 def generate(big_count):
