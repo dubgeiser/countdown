@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import flash
 from flask import redirect
 from flask import render_template
 from flask import request
@@ -30,7 +31,12 @@ def numbers_generate(big_count):
     try:
         target, selection = n.generate(big_count)
     except Exception as error:
-        return redirect('/numbers') # TODO should put meaningful message or throw 404, ...?
+
+        # TODO More meaningful error
+        # TODO Do not blindly put exception messages in UI
+        flash(str(error))
+
+        return redirect('/numbers')
     return render_template('numbers/index.html', target=target, selection=selection)
 
 
