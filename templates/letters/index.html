@@ -3,3 +3,18 @@
 {% block subtitle %}
 Letters
 {% endblock subtitle %}
+{% block content %}
+
+<ul class="selection">
+{% for letter in selection %}
+  <li>{{ letter.upper() }}</li>
+{% endfor %}
+</ul>
+
+<br />
+
+<ul>
+  <li><a href="{{ url_for('letters_pick', vowel_or_consonant='vowel') }}">Klinker</a></li>
+  <li><a href="{{ url_for('letters_pick', vowel_or_consonant='consonant') }}">Medeklinker</a></li>
+</ul>
+{% endblock content %}

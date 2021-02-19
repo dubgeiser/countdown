@@ -3,10 +3,9 @@
 {% block subtitle %}
 Numbers
 {% endblock subtitle %}
-<h1>split up in different templates </h1>
 {% block content %}
   <h3>Maak {{ target }} met volgende getallen:</h3>
-  <ul>
+  <ul class="selection">
       {% for number in selection %}
       <li>{{ number }}</li>
       {% endfor %}
