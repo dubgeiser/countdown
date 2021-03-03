@@ -3,6 +3,7 @@
 {% block subtitle %}
 Letters
 {% endblock subtitle %}
+
 {% block content %}
 
 <ul class="selection">
@@ -13,8 +14,12 @@ Letters
 
 <br />
 
+{% block letter_selection %}
 <ul>
   <li><a href="{{ url_for('letters_pick', vowel_or_consonant='vowel') }}">Klinker</a></li>
   <li><a href="{{ url_for('letters_pick', vowel_or_consonant='consonant') }}">Medeklinker</a></li>
 </ul>
+{% endblock letter_selection %}
+
+
 {% endblock content %}

@@ -7,7 +7,7 @@ from flask import session
 
 from countdown import letters as l
 from countdown import numbers as n
-from countdown.forms import NumbersForm
+from countdown.forms import LettersAnswerForm, NumbersForm
 
 
 app = Flask(__name__)
@@ -65,6 +65,15 @@ def letters_pick(vowel_or_consonant=None):
     return render_template('letters/index.html', selection=session['game']['selection'])
 
 
-@app.route('/letters/play', methods=['GET'])
+@app.route('/letters/play', methods=['GET', 'POST'])
 def letters_play():
-    return render_template('letters/index.html', selection=session['game']['selection'])
+    ''' All letters are chosen, let's play.
+    When finished; fill in your answer in the form.
+    '''
+    form = LettersAnswerForm(session['game']['selection'])
+    if form.validate_on_submit():
+        flash(f'{form.data["answer"]} for {len(form.data["answer"])} points.')
+        return redirect('/letters')
+    return render_template('letters/answer.html',
+            selection=session['game']['selection'],
+            form=form)
