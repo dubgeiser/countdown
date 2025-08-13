@@ -1,10 +1,9 @@
-package main
+package server
 
 import (
-	"countdown/numbers"
+	"countdown/internal/numbers"
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 )
 
@@ -30,11 +29,11 @@ func renderTemplate(w http.ResponseWriter, tpl string, data any) {
 	}
 }
 
-func homeHandler(w http.ResponseWriter, r *http.Request) {
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "layout.html", nil)
 }
 
-func numbersHandler(w http.ResponseWriter, r *http.Request) {
+func NumbersHandler(w http.ResponseWriter, r *http.Request) {
 	target, selection := numbers.Pick(2)
 	renderTemplate(w, "layout.html", NumbersData{
 		Game:      "Numbers",
@@ -43,13 +42,7 @@ func numbersHandler(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func lettersHandler(w http.ResponseWriter, r *http.Request) {
+func LettersHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Letters: %s", r.URL.Path[1:])
 }
 
-func main() {
-	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/numbers/", numbersHandler)
-	http.HandleFunc("/letters/", lettersHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
-}
