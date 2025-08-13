@@ -1,0 +1,47 @@
+:root {
+    --red: #aa0000;
+    --blue: #0000cc;
+    --color-numbers-border: #ffff00;
+    --color-numbers-bg: #1111aa;
+    --color-numbers-fg: #ffff00;
+}
+
+h1 {
+    color: var(--blue);
+    display: block;
+    text-align: center;
+}
+
+h2#game_title{
+    color: var(--red);
+    text-align: center;
+}
+
+div#numbers_target {
+    font-size: 72px;
+    text-align: center;
+}
+
+#numbers_selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    justify-content: center;
+}
+
+#numbers_selection li {
+    width: clamp(50px, 10vw, 80px);
+    height: clamp(50px, 10vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-numbers-border);
+    border-radius: 12px;
+    background-color: var(--color-numbers-bg);
+    color: var(--color-numbers-fg);
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}

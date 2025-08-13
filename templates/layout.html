@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head>
     <body>
-        <h1>Countdown: {{ .Game }}</h1>
+        <h1>Countdown</h1>
+        <h2 id="game_title">{{ .Game }}</h2>
         <div id="numbers_target">
             {{ .Target }}
         </div>
-        <div id="numbers_selection">
-            {{ .Selection }}
-        </div>
+        <ul id="numbers_selection">
+        {{range .Selection}}
+            <li>{{.}}</li>
+        {{else}}
+            No selection.
+        {{end}}
+        </ul>
     </body>
 </html>
