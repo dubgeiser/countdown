@@ -5,14 +5,7 @@ import (
 	"text/template"
 )
 
-type Config struct {
-	TemplatesGlob string
-}
-
-var config Config = Config{
-	TemplatesGlob: "templates/*.html",
-}
-var allTemplates = template.Must(template.ParseGlob(config.TemplatesGlob))
+var allTemplates = template.Must(template.ParseGlob("templates/*.html"))
 
 func RenderTemplate(w http.ResponseWriter, tpl string, data any) {
 	err := allTemplates.ExecuteTemplate(w, tpl, data)
