@@ -25,7 +25,6 @@ h1 {
     font-family: monospace;
     font-weight: bold;
     font-size: var(--font-size-numbers-target);
-    gap: 0.3em;
     justify-content: center;
 }
 
@@ -42,18 +41,15 @@ h1 {
 #numbers_target span::before {
     content: "0";
     display: block;
-    animation: flicker 3s forwards;
+    animation: flicker 4s forwards;
 }
 
-#numbers_target span:nth-child(1)::before {animation-delay: 0s;}
-#numbers_target span:nth-child(2)::before {animation-delay: 3s;}
-#numbers_target span:nth-child(3)::before {animation-delay: 6s;}
+#numbers_target span:nth-child(1)::before {animation-delay: 6s;}
+#numbers_target span:nth-child(2)::before {animation-delay: 10.5s;}
+#numbers_target span:nth-child(3)::before {animation-delay: 15s;}
 
 @keyframes flicker {
     0% { content: "0"; }
-    0% { content: "2"; }
-    0% { content: "9"; }
-    1% { content: "1"; }
     1% { content: "4"; }
     2% { content: "7"; }
     3% { content: "8"; }
