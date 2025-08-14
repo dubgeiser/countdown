@@ -11,9 +11,9 @@ type Config struct {
 	TemplatesGlob string
 }
 
-type NumbersData struct {
+type TplVarsNumbers struct {
 	Game      string
-	Target    int
+	Target    []int
 	Selection []int
 }
 
@@ -35,7 +35,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 func NumbersHandler(w http.ResponseWriter, r *http.Request) {
 	target, selection := numbers.Pick(2)
-	renderTemplate(w, "layout.html", NumbersData{
+	renderTemplate(w, "layout.html", TplVarsNumbers{
 		Game:      "Numbers",
 		Target:    target,
 		Selection: selection,

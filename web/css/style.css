@@ -1,26 +1,102 @@
 :root {
-    --red: #aa0000;
-    --blue: #0000cc;
-    --color-numbers-border: #ffff00;
+    --color-red: #aa0000;
+    --color-blue: #0000cc;
+    --color-numbers-border: #cccccc;
     --color-numbers-bg: #1111aa;
-    --color-numbers-fg: #ffff00;
+    --color-numbers-fg: #ccccf0;
+    --font-size-numbers-selection: clamp(2rem, 2.5vw, 3rem);
+    --font-size-numbers-target: clamp(5rem, 2.5vw, 10rem);
+    --line-height-numbers-target: 2em;
 }
 
 h1 {
-    color: var(--blue);
+    color: var(--color-blue);
     display: block;
     text-align: center;
 }
 
-h2#game_title{
-    color: var(--red);
+#game_title {
+    color: var(--color-red);
     text-align: center;
 }
 
-div#numbers_target {
-    font-size: 72px;
+#numbers_target {
+    display: flex;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: var(--font-size-numbers-target);
+    gap: 0.3em;
+    justify-content: center;
+}
+
+#numbers_target span {
+    display: inline-block;
+    height: var(--line-height-numbers-target);
+    line-height: var(--line-height-numbers-target);
+    width: 1.2em;
+    overflow: hidden;
+    position: relative;
     text-align: center;
 }
+
+#numbers_target span::before {
+    content: "0";
+    display: block;
+    animation: flicker 3s forwards;
+}
+
+#numbers_target span:nth-child(1)::before {animation-delay: 0s;}
+#numbers_target span:nth-child(2)::before {animation-delay: 3s;}
+#numbers_target span:nth-child(3)::before {animation-delay: 6s;}
+
+@keyframes flicker {
+    0% { content: "0"; }
+    0% { content: "2"; }
+    0% { content: "9"; }
+    1% { content: "1"; }
+    1% { content: "4"; }
+    2% { content: "7"; }
+    3% { content: "8"; }
+    4% { content: "5"; }
+    5% { content: "3"; }
+    6% { content: "6"; }
+    7% { content: "0"; }
+    8% { content: "2"; }
+    10% { content: "9"; }
+    11% { content: "1"; }
+    13% { content: "4"; }
+    14% { content: "7"; }
+    16% { content: "8"; }
+    18% { content: "5"; }
+    20% { content: "3"; }
+    22% { content: "6"; }
+    24% { content: "0"; }
+    26% { content: "2"; }
+    29% { content: "9"; }
+    31% { content: "1"; }
+    34% { content: "4"; }
+    36% { content: "7"; }
+    39% { content: "8"; }
+    42% { content: "5"; }
+    44% { content: "3"; }
+    47% { content: "6"; }
+    50% { content: "0"; }
+    53% { content: "2"; }
+    56% { content: "9"; }
+    60% { content: "1"; }
+    63% { content: "4"; }
+    66% { content: "7"; }
+    70% { content: "8"; }
+    73% { content: "5"; }
+    77% { content: "3"; }
+    80% { content: "6"; }
+    84% { content: "0"; }
+    88% { content: "2"; }
+    92% { content: "9"; }
+    96% { content: "1"; }
+    100% { content: var(--digit); }
+}
+
 
 #numbers_selection {
     display: flex;
@@ -42,6 +118,28 @@ div#numbers_target {
     border-radius: 12px;
     background-color: var(--color-numbers-bg);
     color: var(--color-numbers-fg);
-    font-size: clamp(2rem, 2.5vw, 3rem);
+    font-size: var(--font-size-numbers-selection);
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+
+    animation: numberDisplay 0.6s ease-in-out forwards;
+    opacity: 0;
 }
+
+@keyframes numberDisplay {
+    from {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#numbers_selection li:nth-child(1) { animation-delay: 0s; }
+#numbers_selection li:nth-child(2) { animation-delay: 1s; }
+#numbers_selection li:nth-child(3) { animation-delay: 2s; }
+#numbers_selection li:nth-child(4) { animation-delay: 3s; }
+#numbers_selection li:nth-child(5) { animation-delay: 4s; }
+#numbers_selection li:nth-child(6) { animation-delay: 5s; }
