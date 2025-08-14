@@ -1,48 +1,22 @@
 package server
 
 import (
+	"countdown/internal/letters"
 	"countdown/internal/numbers"
+	"countdown/internal/shared"
 	"fmt"
-	"html/template"
+	"log"
 	"net/http"
 )
 
-type Config struct {
-	TemplatesGlob string
-}
-
-type TplVarsNumbers struct {
-	Game      string
-	Target    []int
-	Selection []int
-}
-
-var config Config = Config{
-	TemplatesGlob: "templates/*.html",
-}
-var allTemplates = template.Must(template.ParseGlob(config.TemplatesGlob))
-
-func renderTemplate(w http.ResponseWriter, tpl string, data any) {
-	err := allTemplates.ExecuteTemplate(w, tpl, data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+func StartServer(port int) {
+	http.HandleFunc("/", HomeHandler)
+	http.HandleFunc("/numbers/", numbers.Index)
+	http.HandleFunc("/letters/", letters.Index)
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web"))))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "layout.html", nil)
+	shared.RenderTemplate(w, "layout.html", nil)
 }
-
-func NumbersHandler(w http.ResponseWriter, r *http.Request) {
-	target, selection := numbers.Pick(2)
-	renderTemplate(w, "layout.html", TplVarsNumbers{
-		Game:      "Numbers",
-		Target:    target,
-		Selection: selection,
-	})
-}
-
-func LettersHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Letters: %s", r.URL.Path[1:])
-}
-
