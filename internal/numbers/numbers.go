@@ -28,7 +28,7 @@ func Pick(bigCount int) (int, []int) {
 		small = slices.Delete(small, iRnd, iRnd+1)
 	}
 
-	for target < 100 {
+	for target <= 100 {
 		target = rand.Intn(1000)
 	}
 
