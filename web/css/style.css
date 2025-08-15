@@ -45,8 +45,8 @@ h1 {
 }
 
 #numbers_target span:nth-child(1)::before {animation-delay: 6s;}
-#numbers_target span:nth-child(2)::before {animation-delay: 10.5s;}
-#numbers_target span:nth-child(3)::before {animation-delay: 15s;}
+#numbers_target span:nth-child(2)::before {animation-delay: 8s;}
+#numbers_target span:nth-child(3)::before {animation-delay: 10s;}
 
 @keyframes flicker {
     0% { content: "0"; }
