@@ -1,5 +1,5 @@
 :root {
-    --color-page-title: #0000cc;
+    --color-page-title: oklch(55% 0.12 260);
     --color-page-subtitle: #aa0000;
     --color-numbers-border: #cccccc;
     --color-numbers-bg: #1111aa;
@@ -7,6 +7,29 @@
     --font-size-numbers-selection: clamp(2rem, 2.5vw, 3rem);
     --font-size-numbers-target: clamp(5rem, 2.5vw, 10rem);
     --line-height-numbers-target: 2em;
+
+    --btn-fg: oklch(20% 0 0);
+    --btn-bg: oklch(100% 0 0);
+    --btn-bd: oklch(90% 0 0);
+    --btn-shadow: 0 2px 8px rgb(0 0 0 / 0.06);
+    --btn-shadow-hover: 0 6px 18px rgb(0 0 0 / 0.10);
+
+    --primary-fg: oklch(98% 0 0);
+    --primary-bg: oklch(55% 0.12 260);
+    --primary-bg-hover: color-mix(in oklch, var(--primary-bg), white 10%);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --btn-fg: oklch(95% 0 0);
+    --btn-bg: oklch(24% 0 0);
+    --btn-bd: oklch(35% 0 0);
+    --btn-shadow: 0 2px 8px rgb(0 0 0 / 0.4);
+    --btn-shadow-hover: 0 8px 24px rgb(0 0 0 / 0.55);
+
+    --primary-fg: oklch(12% 0 0);
+    --primary-bg: oklch(70% 0.15 260);
+    --primary-bg-hover: color-mix(in oklch, var(--primary-bg), white 6%);
+  }
 }
 
 body {
@@ -132,7 +155,7 @@ h2 {
     justify-content: center;
     border: 2px solid var(--color-numbers-border);
     border-radius: 12px;
-    background-color: var(--color-numbers-bg);
+    background-color: var(--primary-bg);
     color: var(--color-numbers-fg);
     font-size: var(--font-size-numbers-selection);
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
@@ -184,4 +207,68 @@ h2 {
 #numbers-picker a:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgb(0 0 0 / 0.10);
+}
+
+#game-selection {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+/* ---------------Buttons ------------ */
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border-radius: 14px;
+  font: 600 0.95rem/1 system-ui, sans-serif;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+/* ---------- Primary ---------- */
+a.btn--primary {
+  color: var(--primary-fg);
+  background: var(--primary-bg);
+  border: 1px solid color-mix(in oklch, var(--primary-bg), black 12%);
+  box-shadow: var(--btn-shadow);
+}
+@media (hover: hover) {
+  a.btn--primary:hover:not([aria-disabled="true"]) {
+    background: var(--primary-bg-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--btn-shadow-hover);
+  }
+}
+
+/* ---------- Outline ---------- */
+a.btn--outline {
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-bd);
+  box-shadow: var(--btn-shadow);
+}
+@media (hover: hover) {
+  a.btn--outline:hover:not([aria-disabled="true"]) {
+    background: color-mix(in oklch, var(--btn-bg), currentColor 6%);
+    transform: translateY(-1px);
+    box-shadow: var(--btn-shadow-hover);
+  }
+}
+
+/* ---------- Focus-visible (accessible) ---------- */
+a.btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px color-mix(in oklch, canvas, currentColor 25%),
+    var(--btn-shadow-hover);
+}
+
+/* ---------- Disabled ---------- */
+a[aria-disabled="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+  transform: none;
+  box-shadow: var(--btn-shadow);
 }
