@@ -1,6 +1,6 @@
 :root {
-    --color-red: #aa0000;
-    --color-blue: #0000cc;
+    --color-page-title: #0000cc;
+    --color-page-subtitle: #aa0000;
     --color-numbers-border: #cccccc;
     --color-numbers-bg: #1111aa;
     --color-numbers-fg: #ccccf0;
@@ -9,18 +9,40 @@
     --line-height-numbers-target: 2em;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: grid;
+    place-content: center;
+}
+
 h1 {
-    color: var(--color-blue);
-    display: block;
+    position: relative;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 10px;
+    color: var(--color-page-title);
     text-align: center;
 }
 
-#game_title {
-    color: var(--color-red);
+h1 span {
+    position: absolute;
+    top: 1em;
+    margin-left: -1.2em;
+    font-size: 0.6em;
+    font-weight: 400;
+    color: var(--color-page-subtitle);
+    white-space: nowrap;
+    transform: rotate(-35deg);
+}
+
+h2 {
     text-align: center;
 }
 
-#numbers_target {
+#numbers-target {
     display: flex;
     font-family: monospace;
     font-weight: bold;
@@ -28,25 +50,24 @@ h1 {
     justify-content: center;
 }
 
-#numbers_target span {
+#numbers-target span {
     display: inline-block;
     height: var(--line-height-numbers-target);
     line-height: var(--line-height-numbers-target);
     width: 1.2em;
     overflow: hidden;
     position: relative;
-    text-align: center;
 }
 
-#numbers_target span::before {
+#numbers-target span::before {
     content: "0";
     display: block;
     animation: flicker 4s forwards;
 }
 
-#numbers_target span:nth-child(1)::before {animation-delay: 6s;}
-#numbers_target span:nth-child(2)::before {animation-delay: 8s;}
-#numbers_target span:nth-child(3)::before {animation-delay: 10s;}
+#numbers-target span:nth-child(1)::before {animation-delay: 6s;}
+#numbers-target span:nth-child(2)::before {animation-delay: 7.75s;}
+#numbers-target span:nth-child(3)::before {animation-delay: 9.25s;}
 
 @keyframes flicker {
     0% { content: "0"; }
@@ -94,17 +115,16 @@ h1 {
 }
 
 
-#numbers_selection {
+#numbers-selection {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.8rem;
     padding: 0;
     margin: 0;
     list-style: none;
-    justify-content: center;
 }
 
-#numbers_selection li {
+#numbers-selection li {
     width: clamp(50px, 10vw, 80px);
     height: clamp(50px, 10vw, 80px);
     display: flex;
@@ -133,9 +153,35 @@ h1 {
     }
 }
 
-#numbers_selection li:nth-child(1) { animation-delay: 0s; }
-#numbers_selection li:nth-child(2) { animation-delay: 1s; }
-#numbers_selection li:nth-child(3) { animation-delay: 2s; }
-#numbers_selection li:nth-child(4) { animation-delay: 3s; }
-#numbers_selection li:nth-child(5) { animation-delay: 4s; }
-#numbers_selection li:nth-child(6) { animation-delay: 5s; }
+#numbers-selection li:nth-child(1) { animation-delay: 0s; }
+#numbers-selection li:nth-child(2) { animation-delay: 1s; }
+#numbers-selection li:nth-child(3) { animation-delay: 2s; }
+#numbers-selection li:nth-child(4) { animation-delay: 3s; }
+#numbers-selection li:nth-child(5) { animation-delay: 4s; }
+#numbers-selection li:nth-child(6) { animation-delay: 5s; }
+
+#numbers-picker {
+    display: flex;
+    place-items: center;
+    gap: 0.8rem;
+    list-style: none;
+}
+
+#numbers-picker a {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid oklch(90% 0 0);
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.06);
+    text-decoration: none;
+    color: oklch(25% 0 0);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#numbers-picker a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgb(0 0 0 / 0.10);
+}

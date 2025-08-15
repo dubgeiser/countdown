@@ -2,24 +2,35 @@
 <html>
 
 <head>
+    <title>Countdown{{if .Game}}: {{.Game}}{{end}}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 
 <body>
-    <h1>Countdown</h1>
-    <h2 id="game_title">{{ .Game }}</h2>
-    <div id="numbers_target">
+    <h1>Countdown <span>{{.Game}}</span></h1>
+
+    {{if .Target }}
+    <div id="numbers-target">
         {{range .Target}}
         <span style="--digit:'{{.}}';"></span>
         {{end}}
     </div>
-    <ul id="numbers_selection">
+    <ul id="numbers-selection">
         {{range .Selection}}
         <li>{{.}}</li>
-        {{else}}
-        No selection.
         {{end}}
     </ul>
+    {{end}}
+
+    {{if .BigNumberPicker}}
+    <h2>How many biggies?</h2>
+    <ul id="numbers-picker">
+        {{range .BigNumberPicker}}
+        <li><a href="pick?big={{.}}">{{.}}</a></li>
+        {{end}}
+    </ul>
+    {{end}}
+
 </body>
 
 </html>

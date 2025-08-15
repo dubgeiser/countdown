@@ -5,10 +5,11 @@ import (
 	"slices"
 )
 
-type TplVarsNumbers struct {
-	Game      string
-	Target    []int
-	Selection []int
+type ViewData struct {
+	Game            string
+	Target          []int
+	Selection       []int
+	BigNumberPicker []int
 }
 
 var bigNumbers = []int{25, 50, 75, 100}
