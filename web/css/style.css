@@ -183,17 +183,17 @@ h2 {
 #numbers-selection li:nth-child(5) { animation-delay: 4s; }
 #numbers-selection li:nth-child(6) { animation-delay: 5s; }
 
-#numbers-picker {
+#picker {
     display: flex;
     place-items: center;
     gap: 0.8rem;
     list-style: none;
 }
 
-#numbers-picker a {
+#picker a {
     display: grid;
     place-items: center;
-    width: 3rem;
+    width: 6rem;
     height: 3rem;
     border-radius: 12px;
     background: white;
@@ -204,7 +204,7 @@ h2 {
     transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-#numbers-picker a:hover {
+#picker a:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgb(0 0 0 / 0.10);
 }

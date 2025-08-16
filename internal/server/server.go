@@ -14,5 +14,7 @@ func StartServer(port int) {
 	http.HandleFunc("/numbers/", numbers.Index)
 	http.HandleFunc("/numbers/pick", numbers.Picker)
 	http.HandleFunc("/letters/", letters.Index)
+	http.HandleFunc("/letters/pick/vowel", letters.PickVowel)
+	http.HandleFunc("/letters/pick/consonant", letters.PickConsonant)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }

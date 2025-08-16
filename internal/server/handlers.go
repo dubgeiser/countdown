@@ -1,10 +1,12 @@
 package server
 
 import (
-	"countdown/internal/shared"
+	"countdown/internal/view"
 	"net/http"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	shared.RenderTemplate(w, "layout.html", nil)
+	view.Render(w, "", view.ViewData{
+		ShowGameNavigation: true,
+	})
 }

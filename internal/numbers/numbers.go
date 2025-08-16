@@ -5,13 +5,6 @@ import (
 	"slices"
 )
 
-type ViewData struct {
-	Game            string
-	Target          []int
-	Selection       []int
-	BigNumberPicker []int
-}
-
 var bigNumbers = []int{25, 50, 75, 100}
 var smallNumbers = []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10}
 var totalNumberCount = 6

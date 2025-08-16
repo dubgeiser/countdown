@@ -8,37 +8,13 @@
 
 <body>
     <h1>Countdown <span>{{.Game}}</span></h1>
-
-    {{if .Target }}
-
-    <div id="numbers-target">
-        {{range .Target}}
-        <span style="--digit:'{{.}}';"></span>
-        {{end}}
-    </div>
-    <ul id="numbers-selection">
-        {{range .Selection}}
-        <li>{{.}}</li>
-        {{end}}
-    </ul>
-
-    {{else}}{{if .BigNumberPicker}}
-
-    <h2>How many biggies?</h2>
-    <ul id="numbers-picker">
-        {{range .BigNumberPicker}}
-        <li><a href="pick?big={{.}}">{{.}}</a></li>
-        {{end}}
-    </ul>
-
-    {{else}}
+    {{block "screen" .}}{{end}}
+    {{if .ShowGameNavigation}}
     <div id="game-selection">
         <a class="btn btn--primary" href="/numbers">Numbers</a>
         <a class="btn btn--primary" href="/letters">Letters</a>
     </div>
     {{end}}
-    {{end}}
-
 </body>
 
 </html>

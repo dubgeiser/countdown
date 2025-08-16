@@ -1,0 +1,22 @@
+{{define "screen"}}
+<div id="numbers-target">
+    {{range .Target}}
+    <span style="--digit:'{{.}}';"></span>
+    {{end}}
+</div>
+<ul id="numbers-selection">
+    {{range .Selection}}
+    <li>{{.}}</li>
+    {{end}}
+</ul>
+
+{{if .BigNumberPicker}}
+<h2>How many biggies?</h2>
+<ul id="picker">
+    {{range .BigNumberPicker}}
+    <li><a href="/numbers/pick?big={{.}}">{{.}}</a></li>
+    {{end}}
+</ul>
+{{end}}
+
+{{end}}

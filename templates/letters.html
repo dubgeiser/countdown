@@ -1,0 +1,22 @@
+{{define "screen"}}
+<ul id="letters-selection">
+    {{range .Selection}}
+    <li>{{.}}</li>
+    {{end}}
+</ul>
+
+{{if .LettersSelection}}
+<ul id="letters-selection">
+    {{range .LettersSelection}}
+    <li>{{.}}</li>
+    {{end}}
+</ul>
+{{end}}
+
+<ul id="picker">
+    <li><a href="/letters/pick/vowel">Vowel</a></li>
+    <li><a href="/letters/pick/consonant">Consonant</a></li>
+</ul>
+
+{{end}}
+
