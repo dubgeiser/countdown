@@ -6,14 +6,19 @@ import (
 	"strings"
 )
 
+type Link struct {
+	Href  string
+	Label string
+}
+
 type ViewData struct {
-	Game               string
-	Target             []int
-	Selection          []int
-	BigNumberPicker    []int
-	ShowGameNavigation bool
-	LettersSelection   []rune
-	PickedLetter       rune
+	Game             string
+	Target           []int
+	Selection        []int
+	BigNumberPicker  []int
+	Menu             []Link
+	LettersSelection []rune
+	PickedLetter     rune
 }
 
 var tplBase = template.Must(template.ParseFiles("templates/layout.html"))

@@ -9,10 +9,11 @@
 <body>
     <h1>Countdown <span>{{.Game}}</span></h1>
     {{block "screen" .}}{{end}}
-    {{if .ShowGameNavigation}}
+    {{if .Menu}}
     <div id="game-selection">
-        <a class="btn btn--primary" href="/numbers">Numbers</a>
-        <a class="btn btn--primary" href="/letters">Letters</a>
+        {{range .Menu}}
+        <a class="btn btn--primary" href="{{.Href}}">{{.Label}}</a>
+        {{end}}
     </div>
     {{end}}
 </body>
